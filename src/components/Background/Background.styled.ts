@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import Background from '../../assets/img/background.png';
 
-export const BackgroundStyled = styled.div(({ theme }) => ({
+export const BackgroundStyled = styled.div({
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center center',
   backgroundSize: 'cover',
@@ -12,4 +12,4 @@ export const BackgroundStyled = styled.div(({ theme }) => ({
   left: 0,
   width: '100%',
   height: '100%',
-}));
+});
