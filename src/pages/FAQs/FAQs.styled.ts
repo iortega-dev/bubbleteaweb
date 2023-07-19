@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 
-export const Section = styled.section(({ theme }) => ({
-  minHeight: '100vh',
+export const Section = styled.div({
+  height: '100vh',
   position: 'relative',
-  background: theme.palette.body,
-
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-}));
+});
 
 export const Container = styled.section(({ theme }) => ({
   margin: '0 auto',
-  padding: theme.spacing(0, 3),
+  padding: theme.spacing(2, 6),
   maxWidth: '1200px',
 
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+
+  background: theme.palette.body,
 
   [theme.breakpoints.down('md')]: {
     justifyContent: 'center',

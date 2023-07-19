@@ -1,6 +1,5 @@
 import { Box, Container, Section } from './Home.styled';
 
-import BaldiesVideo from './components/BaldiesVideo';
 import HomeDescription from './components/HomeDescription/HomeDescription';
 
 const Home = () => {
@@ -9,9 +8,6 @@ const Home = () => {
       <Container>
         <Box>
           <HomeDescription />
-        </Box>
-        <Box>
-          <BaldiesVideo />
         </Box>
       </Container>
     </Section>

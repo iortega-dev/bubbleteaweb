@@ -1,30 +1,29 @@
 import styled from 'styled-components';
 
-export const Section = styled.section(({ theme }) => ({
-  minHeight: `calc(100vh - ${theme.sizing.navHeight})`,
+export const Section = styled.div({
+  height: '100vh',
   position: 'relative',
-  background: theme.palette.body,
-}));
+});
 
 export const Container = styled.section(({ theme }) => ({
-  minHeight: '80vh',
+  minHeight: '100vh',
   margin: '0 auto',
   padding: theme.spacing(0, 3),
-  maxWidth: '1200px',
+  maxWidth: '960px',
 
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
   alignItems: 'center',
 
   [theme.breakpoints.down('lg')]: {
     flexDirection: 'column-reverse',
-    justifyContent: 'center',
+    padding: theme.spacing(0, 6),
   },
 }));
 
 export const Box = styled.section(({ theme }) => ({
-  width: '45%',
+  width: '60%',
   height: '100%',
   display: 'flex',
   alignItems: 'center',
