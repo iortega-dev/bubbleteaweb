@@ -16,32 +16,34 @@ interface FAQ {
 const FAQs: React.FC = () => {
   const faqs: FAQ[] = [
     {
-      question: '- What are Bearded Baldies?',
+      question: '- What is EtherTea?',
       answer:
-        'Bearded Baldies is a collection of 10,000 stylish NFT collectibles featuring unique bearded characters.',
+        'EtherTea is a collection of 10,000 unique NFT collectibles, inspired by the vibrant and diverse world of bubble tea, on the Ethereum blockchain.',
     },
     {
-      question: '- How can I purchase Bearded Baldies NFTs?',
-      answer: 'You can purchase Bearded Baldies NFTs on our official website. ',
-    },
-    {
-      question: '- Can I resell my Bearded Baldies NFTs?',
+      question: '- How can I acquire an EtherTea NFT?',
       answer:
-        'Yes, you can resell your Bearded Baldies NFTs on secondary marketplaces. But be aware, if you sell your Bearded Baldies, you lose access to future events and updates',
+        'EtherTea NFTs will be gifted. However, you will have to cover the minting cost associated with the Ethereum network at the time of minting.',
     },
     {
-      question: '- Are there any benefits for owning Bearded Baldies NFTs?',
+      question: '- What do I receive immediately after minting?',
       answer:
-        'The main utility is to provide a profile picture (PFP) where the owner feels identified but in the future owning Bearded Baldies NFTs grants you exclusive access to our community events and updates (To be announced).',
+        'Upon minting, you will receive a placeholder. Once all NFTs have been minted, the placeholder will be replaced, revealing the unique EtherTea NFT you have acquired.',
     },
     {
-      question: '- How can I contact the Bearded Baldies team?',
+      question: '- Are there any additional costs associated with EtherTea NFTs?',
       answer:
-        'You can reach out to our team by sending an message to our twitter account @BeardedBaldies',
+        'Yes, there is a 5% royalty associated with each EtherTea NFT. This will come into effect during any secondary sales or transfers.',
     },
     {
-      question: '- Do you have a Discord group?',
-      answer: "No, we don't have one. So, if you see a Bearded Baldies group, it's a scam",
+      question: '- What is the future roadmap or utility for EtherTea?',
+      answer:
+        'Currently, EtherTea is primarily for collectible purposes. However, if there is significant community interest and support, we may explore expanding the project further. As of now, there are no definite plans for the same.',
+    },
+    {
+      question: '- Will there be any community platforms like Discord for EtherTea?',
+      answer:
+        "As of now, we don't have a dedicated Discord group. If you come across any group claiming to be official EtherTea, please be cautious as it might be a scam.",
     },
   ];
 
@@ -57,7 +59,7 @@ const FAQs: React.FC = () => {
                   <Subtitle>{faq.question}</Subtitle>
                 </AccordionItemButton>
               </AccordionItemHeading>
-              <AccordionItemPanel>
+              <AccordionItemPanel className="accordion__content">
                 <Text>{faq.answer}</Text>
               </AccordionItemPanel>
             </AccordionItem>

@@ -30,7 +30,6 @@ export const Container = styled.section(({ theme }) => ({
     maxWidth: 630,
 
     '.accordion__item': {
-      cursor: 'pointer',
       '&:not(:last-child)': {
         borderBottomColor: theme.palette.black,
         borderBottomStyle: 'solid',
@@ -42,6 +41,7 @@ export const Container = styled.section(({ theme }) => ({
 
 export const Title = styled.h1(({ theme }) => ({
   fontSize: theme.sizing.h1,
+  fontFamily: 'singkongregular',
   whiteSpace: 'pre-line',
   width: '100%',
   color: theme.palette.black,
@@ -55,7 +55,9 @@ export const Title = styled.h1(({ theme }) => ({
 export const Subtitle = styled.h3(({ theme }) => ({
   fontSize: theme.sizing.h4,
   color: theme.palette.black,
+  fontFamily: 'singkongregular',
   width: '100%',
+  cursor: 'pointer',
 
   alignSelf: 'flex-start',
   [theme.breakpoints.down('lg')]: {
