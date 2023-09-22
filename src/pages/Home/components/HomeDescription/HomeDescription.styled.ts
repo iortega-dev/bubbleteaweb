@@ -1,12 +1,23 @@
 import styled from 'styled-components';
 
+export const FirstTitleWrapper = styled.div(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+
+  [theme.breakpoints.down('lg')]: {
+    flexDirection: 'column',
+  },
+}));
+
+export const SecondTitleWrapper = styled.div(({ theme }) => ({}));
+
 export const Title = styled.h1(({ theme }) => ({
   fontFamily: 'singkongregular',
   fontSize: theme.sizing.h2,
-  alignSelf: 'flex',
-  whiteSpace: 'pre-line',
   width: '100%',
   textAlign: 'center',
+  whiteSpace: 'pre',
+  margin: '0',
 
   [theme.breakpoints.down('lg')]: {
     fontSize: theme.sizing.h3,
