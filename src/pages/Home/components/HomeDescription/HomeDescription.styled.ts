@@ -9,7 +9,7 @@ export const FirstTitleWrapper = styled.div(({ theme }) => ({
   },
 }));
 
-export const SecondTitleWrapper = styled.div(({ theme }) => ({}));
+export const SecondTitleWrapper = styled.div({});
 
 export const Title = styled.h1(({ theme }) => ({
   fontFamily: 'singkongregular',
@@ -38,11 +38,66 @@ export const Subtitle = styled.h3(({ theme }) => ({
 }));
 
 export const ButtonWrapper = styled.div(({ theme }) => ({
-  alignSelf: 'flex-start',
+  marginTop: '20px',
+  display: 'flex',
+  alignSelf: 'center',
+  justifyContent: 'center',
   [theme.breakpoints.down('lg')]: {
+    marginTop: '20px',
     alignSelf: 'center',
   },
 }));
+
+export const MintButton = styled.button({
+  display: 'inline-block',
+  padding: '16px 64px',
+  lineHeight: 'normal',
+  fontFamily: 'singkongregular',
+  fontSize: '36px',
+  fontWeight: 'bold',
+  color: 'rgb(53, 53, 53)',
+  background: 'transparent',
+  borderRadius: '50px',
+  textAlign: 'center',
+  textDecoration: 'none',
+  cursor: 'pointer',
+  position: 'relative',
+  zIndex: 1,
+  overflow: 'hidden',
+  border: '6px solid black',
+
+  ':before': {
+    content: '""',
+    position: 'absolute',
+    top: '0%',
+    left: '-100%',
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#e1a58e',
+    transition: 'left 0.8s ease-in-out',
+    zIndex: -1,
+  },
+
+  ':hover:before': {
+    left: '0%',
+  },
+
+  ':after': {
+    content: '""',
+    position: 'absolute',
+    top: '0%',
+    left: '0%',
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(225, 165, 142, 0.2)',
+    transition: 'background-color 0.8s ease-in-out',
+    zIndex: -1,
+  },
+
+  ':hover:after': {
+    backgroundColor: 'transparent',
+  },
+});
 
 export const TypewritterWrapper = styled.div({
   fontFamily: 'singkongregular',
