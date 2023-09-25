@@ -1,7 +1,11 @@
-import { BackgroundStyled } from './Background.styled';
+import { BackgroundColorStyled, BackgroundStyled } from './Background.styled';
 
 const Background = () => {
-  return <BackgroundStyled />;
+  return (
+    <BackgroundColorStyled>
+      <BackgroundStyled />;
+    </BackgroundColorStyled>
+  );
 };
 
 export default Background;
