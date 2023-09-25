@@ -25,6 +25,7 @@ export const Title = styled.h1(({ theme }) => ({
 }));
 
 export const Subtitle = styled.h3(({ theme }) => ({
+  fontFamily: 'mouldycheese',
   fontSize: theme.sizing.p,
   color: theme.utils.rgba(theme.palette.black, 0.6),
   width: '100%',

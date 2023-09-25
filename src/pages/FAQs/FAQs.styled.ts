@@ -20,6 +20,15 @@ export const Container = styled.section(({ theme }) => ({
 
   background: theme.palette.body,
 
+  borderRadius: '0% 0% 0% 0% / 0% 0% 0% 0%',
+  color: 'white',
+  boxShadow: '20px 20px rgba(0,0,0,.15)',
+  transition: 'all .4s ease',
+  '&:hover': {
+    borderRadius: '0% 0% 50% 50% / 0% 0% 2% 2%',
+    boxShadow: '10px 10px rgba(0,0,0,.25)',
+  },
+
   [theme.breakpoints.down('md')]: {
     justifyContent: 'center',
   },
@@ -41,7 +50,7 @@ export const Container = styled.section(({ theme }) => ({
 
 export const Title = styled.h1(({ theme }) => ({
   fontSize: theme.sizing.h1,
-  fontFamily: 'singkongregular',
+  fontFamily: 'mouldycheese',
   whiteSpace: 'pre-line',
   width: '100%',
   color: theme.palette.black,
@@ -55,7 +64,8 @@ export const Title = styled.h1(({ theme }) => ({
 export const Subtitle = styled.h3(({ theme }) => ({
   fontSize: theme.sizing.h4,
   color: theme.palette.black,
-  fontFamily: 'singkongregular',
+  fontFamily: 'mouldycheese',
+  fontWeight: '100',
   width: '100%',
   cursor: 'pointer',
 
@@ -69,7 +79,8 @@ export const Subtitle = styled.h3(({ theme }) => ({
 export const Text = styled.p(({ theme }) => ({
   fontSize: theme.sizing.p,
   color: theme.palette.darkGray,
-  fontWeight: 'bold',
+  fontFamily: 'mouldycheese',
+  fontWeight: '100',
   width: '100%',
 
   alignSelf: 'flex-start',
