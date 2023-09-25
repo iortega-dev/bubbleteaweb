@@ -4,7 +4,9 @@ import Typewriter from 'typewriter-effect';
 import EtherTeaText from '../../../../assets/img/EtherTea.png';
 
 import {
+  ButtonWrapper,
   FirstTitleWrapper,
+  MintButton,
   SecondTitleWrapper,
   StyledLogo,
   Subtitle,
@@ -66,9 +68,9 @@ const HomeDescription = () => {
         <Subtitle>* It's an NFT, not a real one ;)</Subtitle>
       </SecondTitleWrapper>
 
-      {/* <ButtonWrapper>
-        <Button>Explore</Button>
-      </ButtonWrapper> */}
+      <ButtonWrapper>
+        <MintButton>MINT</MintButton>
+      </ButtonWrapper>
     </>
   );
 };
