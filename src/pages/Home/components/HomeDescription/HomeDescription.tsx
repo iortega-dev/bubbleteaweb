@@ -14,9 +14,13 @@ import {
   TypewritterWrapper,
 } from './HomeDescription.styled';
 import HomeCarousel from '../HomeCarousel';
+import Modal from '../../../../components/Modal/Modal';
+import HomeMintModal from '../HomeMintModal';
+import { useModal } from '../../../../context/ModalContext';
 
 const HomeDescription = () => {
   const [currentImage, setCurrentImage] = useState(0);
+  const { isVisible, toggleModalVisibility } = useModal();
 
   return (
     <>
@@ -68,9 +72,13 @@ const HomeDescription = () => {
         <Subtitle>* It's an NFT, not a real one ;)</Subtitle>
       </SecondTitleWrapper>
 
-      <ButtonWrapper>
+      <ButtonWrapper onClick={toggleModalVisibility}>
         <MintButton>MINT</MintButton>
       </ButtonWrapper>
+
+      <Modal isOpen={isVisible} onClose={toggleModalVisibility}>
+        <HomeMintModal />
+      </Modal>
     </>
   );
 };
