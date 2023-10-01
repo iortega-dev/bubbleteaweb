@@ -2,10 +2,15 @@ import { ButtonStyled } from './Button.styled';
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   children: React.ReactNode;
+  size?: 'medium' | 'small';
 }
 
-const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
-  return <ButtonStyled {...props}>{children}</ButtonStyled>;
+const Button: React.FC<ButtonProps> = ({ children, size = 'medium', ...props }) => {
+  return (
+    <ButtonStyled size={size} {...props}>
+      {children}
+    </ButtonStyled>
+  );
 };
 
 export default Button;
