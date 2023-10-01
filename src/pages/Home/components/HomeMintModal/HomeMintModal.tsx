@@ -50,7 +50,7 @@ export const HomeMintModal = () => {
       <HomeMintFormWrapperStyled>{steps[page]}</HomeMintFormWrapperStyled>
       <HomeMintButtonsWrapperStyled>
         <Button size="small" onClick={nextStep}>
-          NEXT
+          {page !== 2 ? 'NEXT' : 'CLOSE'}
         </Button>
       </HomeMintButtonsWrapperStyled>
     </HomeMintWrapperStyled>

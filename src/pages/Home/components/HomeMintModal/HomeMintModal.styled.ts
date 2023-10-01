@@ -24,6 +24,7 @@ export const HomeMintStepsWrapperStyled = styled.div(({ theme }) => ({
 export const HomeMintFormWrapperStyled = styled.div(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
+  alignItems: 'center',
   padding: `${theme.spacing(4)} 0`,
   borderBottom: '1px solid #E5E7EB',
   borderTop: '1px solid #E5E7EB',
@@ -49,6 +50,7 @@ export const HomeMintStepDescription = styled.span({
   fontFamily: "'Poppins', sans-serif",
   color: '#6B7280',
   textAlign: 'center',
+  marginBottom: '16px',
 });
 
 // export const HomeMintStepTitle = styled.p(({ theme }) => ({}));
