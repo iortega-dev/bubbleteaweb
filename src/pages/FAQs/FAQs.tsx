@@ -53,7 +53,7 @@ const FAQs: React.FC = () => {
         <Title>FAQs</Title>
         <Accordion allowZeroExpanded={true}>
           {faqs.map(faq => (
-            <AccordionItem>
+            <AccordionItem key={faq.question}>
               <AccordionItemHeading>
                 <AccordionItemButton>
                   <Subtitle>{faq.question}</Subtitle>

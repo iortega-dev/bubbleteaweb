@@ -79,7 +79,7 @@ export const Subtitle = styled.h3(({ theme }) => ({
 export const Text = styled.p(({ theme }) => ({
   fontSize: theme.sizing.p,
   color: theme.palette.darkGray,
-  fontFamily: 'mouldycheese',
+  fontFamily: "'Poppins', sans-serif",
   fontWeight: '100',
   width: '100%',
 
