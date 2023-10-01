@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonStyled = styled.button<{ size: 'medium' | 'small' }>(({ theme, size }) => ({
+export const ButtonStyled = styled.button<{ size: 'medium' | 'small' }>(({ size }) => ({
   display: 'inline-block',
   padding: size === 'medium' ? '16px 64px' : '8px 32px',
   lineHeight: 'normal',
