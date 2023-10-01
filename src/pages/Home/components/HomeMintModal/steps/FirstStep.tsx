@@ -1,5 +1,7 @@
 import { HomeMintStepDescription, HomeMintStepTitle } from '../HomeMintModal.styled';
 
+import { Follow } from 'react-twitter-widgets';
+
 const FirstStep = () => {
   return (
     <>
@@ -7,6 +9,7 @@ const FirstStep = () => {
       <HomeMintStepDescription>
         Follow @BeardedBaldies for fresh updates. Your support means the world to us
       </HomeMintStepDescription>
+      <Follow username="BeardedBaldies" options={{ size: 'large' }} />
     </>
   );
 };
