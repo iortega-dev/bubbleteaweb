@@ -16,7 +16,15 @@ export const GlobalStyles = createGlobalStyle`
           url('/fonts/mouldycheese-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-} 
+  } 
+
+  @font-face {
+    font-family: 'gloriahallelujah';
+    src: url('/fonts/gloriahallelujah-webfont.woff2') format('woff2'),
+          url('/fonts/gloriahallelujah-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  } 
 
 * {
     font-family: 'Nunito Sans', sans-serif;
