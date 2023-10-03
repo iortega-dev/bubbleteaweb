@@ -29,6 +29,7 @@ export const Box = styled.section(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   flexDirection: 'column',
+  position: 'relative',
 
   [theme.breakpoints.down('lg')]: {
     width: '100%',

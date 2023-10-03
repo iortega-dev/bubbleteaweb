@@ -8,7 +8,9 @@ import {
   FirstTitleWrapper,
   MintButton,
   SecondTitleWrapper,
+  StyledLink,
   StyledLogo,
+  StyledLogoWrapper,
   Subtitle,
   Title,
   TypewritterWrapper,
@@ -24,7 +26,12 @@ const HomeDescription = () => {
 
   return (
     <>
-      <StyledLogo src={EtherTeaText} />
+      <StyledLogoWrapper>
+        <StyledLogo src={EtherTeaText} />
+        <StyledLink href="https://beardedbaldies.com/" target="_blank">
+          By BeardedBaldies
+        </StyledLink>
+      </StyledLogoWrapper>
       <HomeCarousel imageIndex={currentImage} />
       <FirstTitleWrapper>
         <Title>Do you want a free </Title>

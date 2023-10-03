@@ -151,3 +151,33 @@ export const StyledTea = styled.img(({ theme }) => ({
     transform: 'scale(1.1)',
   },
 }));
+
+export const StyledLink = styled.a(({ theme }) => ({
+  fontFamily: 'gloriahallelujah',
+  fontWeight: 'bold',
+  position: 'absolute',
+  whiteSpace: 'nowrap',
+  bottom: -24,
+  right: -64,
+  fontSize: 24,
+  textDecoration: 'none',
+  zIndex: 1,
+
+  [theme.breakpoints.down('lg')]: {
+    position: 'relative',
+    right: 0,
+    bottom: -10,
+    fontSize: 20,
+  },
+}));
+
+export const StyledLogoWrapper = styled.div(({ theme }) => ({
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+
+  [theme.breakpoints.down('lg')]: {
+    marginBottom: 10,
+  },
+}));
