@@ -18,7 +18,7 @@ const FAQs: React.FC = () => {
     {
       question: '- What is EtherTea?',
       answer:
-        'EtherTea is a collection of 10,000 unique NFT collectibles, inspired by the vibrant and diverse world of bubble tea, on the Ethereum blockchain.',
+        'EtherTea is a collection of 10,000 FREE unique NFT collectibles, inspired by the vibrant and diverse world of bubble tea, hosted on the Ethereum blockchain. This is a side project created by "BeardedBaldies". You can find more information about the main project at BeardedBaldies Website (https://beardedbaldies.com/).',
     },
     {
       question: '- How can I acquire an EtherTea NFT?',
@@ -26,14 +26,9 @@ const FAQs: React.FC = () => {
         'EtherTea NFTs will be gifted. However, you will have to cover the minting cost associated with the Ethereum network at the time of minting.',
     },
     {
-      question: '- What do I receive immediately after minting?',
-      answer:
-        'Upon minting, you will receive a placeholder. Once all NFTs have been minted, the placeholder will be replaced, revealing the unique EtherTea NFT you have acquired.',
-    },
-    {
       question: '- Are there any additional costs associated with EtherTea NFTs?',
       answer:
-        'Yes, there is a 5% royalty associated with each EtherTea NFT. This will come into effect during any secondary sales or transfers.',
+        'No, there is no additional costs associated with EtherTea NFTs. However, when minting, users are responsible for the associated Ethereum network gas fees.',
     },
     {
       question: '- What is the future roadmap or utility for EtherTea?',
