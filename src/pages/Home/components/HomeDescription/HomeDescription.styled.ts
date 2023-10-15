@@ -23,9 +23,9 @@ export const Title = styled.h1(({ theme }) => ({
     fontSize: theme.sizing.h3,
   },
 
-  span: {
+  '> span': {
     fontFamily: 'singkongregular',
-    color: '#148959',
+    color: '#308914',
   },
 }));
 
