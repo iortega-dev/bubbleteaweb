@@ -22,6 +22,11 @@ export const Title = styled.h1(({ theme }) => ({
   [theme.breakpoints.down('lg')]: {
     fontSize: theme.sizing.h3,
   },
+
+  span: {
+    fontFamily: 'singkongregular',
+    color: '#148959',
+  },
 }));
 
 export const Subtitle = styled.h3(({ theme }) => ({

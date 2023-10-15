@@ -34,7 +34,9 @@ const HomeDescription = () => {
       </StyledLogoWrapper>
       <HomeCarousel imageIndex={currentImage} />
       <FirstTitleWrapper>
-        <Title>Do you want a free </Title>
+        <Title>
+          Do you want a <span>FREE</span>{' '}
+        </Title>
         <Title>
           <TypewritterWrapper>
             <Typewriter
