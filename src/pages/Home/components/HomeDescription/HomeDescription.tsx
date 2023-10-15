@@ -83,7 +83,7 @@ const HomeDescription = () => {
         <MintButton>MINT</MintButton>
       </ButtonWrapper>
 
-      <Modal isOpen={isVisible} onClose={toggleModalVisibility}>
+      <Modal isOpen={isVisible} onClose={toggleModalVisibility} closeOnBackdropClick={false}>
         <HomeMintModal />
       </Modal>
     </>
