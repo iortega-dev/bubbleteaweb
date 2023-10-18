@@ -4,6 +4,7 @@ import Typewriter from 'typewriter-effect';
 import EtherTeaText from '../../../../assets/img/EtherTea.png';
 
 import {
+  AlreadyMintedText,
   ButtonWrapper,
   FirstTitleWrapper,
   MintButton,
@@ -12,6 +13,7 @@ import {
   StyledLogo,
   StyledLogoWrapper,
   Subtitle,
+  ThirdTitleWrapper,
   Title,
   TypewritterWrapper,
 } from './HomeDescription.styled';
@@ -84,6 +86,10 @@ const HomeDescription = () => {
       <ButtonWrapper onClick={toggleModalVisibility}>
         <MintButton>MINT</MintButton>
       </ButtonWrapper>
+
+      <ThirdTitleWrapper>
+        <AlreadyMintedText>00000 / 10000 Minted</AlreadyMintedText>
+      </ThirdTitleWrapper>
 
       <Modal isOpen={isVisible} onClose={toggleModalVisibility} closeOnBackdropClick={false}>
         <HomeMintModal />

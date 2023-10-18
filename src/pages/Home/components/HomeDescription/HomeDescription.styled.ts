@@ -11,6 +11,8 @@ export const FirstTitleWrapper = styled.div(({ theme }) => ({
 
 export const SecondTitleWrapper = styled.div({});
 
+export const ThirdTitleWrapper = styled.div({});
+
 export const Title = styled.h1(({ theme }) => ({
   fontFamily: 'singkongregular',
   fontSize: theme.sizing.h2,
@@ -26,6 +28,20 @@ export const Title = styled.h1(({ theme }) => ({
   '> span': {
     fontFamily: 'singkongregular',
     color: '#308914',
+  },
+}));
+
+export const AlreadyMintedText = styled.h3(({ theme }) => ({
+  fontFamily: 'mouldycheese',
+  fontSize: '2.5em',
+  width: '100%',
+  textAlign: 'center',
+  whiteSpace: 'pre',
+  margin: '0',
+  marginTop: 20,
+
+  [theme.breakpoints.down('lg')]: {
+    fontSize: '1.5em',
   },
 }));
 
@@ -55,10 +71,10 @@ export const ButtonWrapper = styled.div(({ theme }) => ({
 
 export const MintButton = styled.button({
   display: 'inline-block',
-  padding: '16px 64px',
-  lineHeight: 'normal',
+  padding: '4px 64px 2px',
+  lineHeight: '42px',
   fontFamily: 'singkongregular',
-  fontSize: '36px',
+  fontSize: '32px',
   fontWeight: 'bold',
   color: 'rgb(53, 53, 53)',
   background: 'transparent',
