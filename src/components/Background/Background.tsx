@@ -3,7 +3,7 @@ import { BackgroundColorStyled, BackgroundStyled } from './Background.styled';
 const Background = () => {
   return (
     <BackgroundColorStyled>
-      <BackgroundStyled />;
+      <BackgroundStyled />
     </BackgroundColorStyled>
   );
 };
