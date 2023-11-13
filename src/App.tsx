@@ -6,7 +6,8 @@ import { GlobalStyles } from './theme/global';
 import BackToTop from './components/BackToTop';
 
 import Home from './pages/Home';
-import FAQs from './pages/FAQs/FAQs';
+import FAQs from './pages/Home/FAQs/FAQs';
+
 import Background from './components/Background/Background';
 
 function App() {
