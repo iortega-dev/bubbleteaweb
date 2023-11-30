@@ -23,7 +23,11 @@ const contractsNetworks = {
   mainnet: '1',
 };
 
-export const HomeMintModal = () => {
+interface iModal {
+  setCurrentSupply: () => void;
+}
+
+export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
   const [page, setPage] = useState(0);
   const [progress, setProgress] = useState(0);
   const { toggleModalVisibility } = useModal();
@@ -32,7 +36,6 @@ export const HomeMintModal = () => {
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [theContractInstance, setTheContractInstance] = useState<object | null>(null);
   const [isMinting, setIsMinting] = useState<boolean>(false);
-  const [currentSupply, setCurrentSupply] = useState<number>(0);
   const [toMint, setToMint] = useState<number>(1);
 
   const steps: Record<number, ReactNode> = {

@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Typewriter from 'typewriter-effect';
-
+import detectEthereumProvider from '@metamask/detect-provider';
+import Web3 from 'web3';
 import EtherTeaText from '../../../../assets/img/EtherTea.png';
 
 import {
@@ -21,10 +22,129 @@ import HomeCarousel from '../HomeCarousel';
 import Modal from '../../../../components/Modal/Modal';
 import HomeMintModal from '../HomeMintModal';
 import { useModal } from '../../../../context/ModalContext';
+import EtherContract from '../../../../contracts/EtherTea.json';
+
+const contractsNetworks = {
+  development: '1701372315147',
+  mainnet: '1',
+};
 
 const HomeDescription = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const { isVisible, toggleModalVisibility } = useModal();
+  const [chainId, setChainId] = useState<string>('');
+  const [wallet, setWallet] = useState<string>('');
+  const [isConnected, setIsConnected] = useState<boolean>(false);
+  const [theContractInstance, setTheContractInstance] = useState<object | null>(null);
+  const [currentSupply, setCurrentSupply] = useState<number>(0);
+
+  useEffect(() => {
+    const getProvider = async () => {
+      const provider = await detectEthereumProvider();
+      console.log(provider);
+      if (provider) {
+        console.log('Ethereum successfully detected!');
+        // @ts-nocheck
+        // @ts-ignore
+        const chainId = await provider.request({
+          method: 'eth_chainId',
+        });
+        setChainId(chainId);
+      } else {
+        console.log('Please install/connect MetaMask!');
+      }
+    };
+    getProvider();
+  }, []);
+
+  useEffect(() => {
+    if (!window.ethereum && chainId === '') {
+      return;
+    }
+    createContractInstance();
+  }, [chainId]);
+
+  useEffect(() => {
+    if (!window.ethereum) {
+      return;
+    }
+    window.ethereum.on('accountsChanged', (accounts: string[]) => {
+      if (accounts[0]) {
+        setIsConnected(false);
+        setWallet(accounts[0]);
+      } else {
+        setIsConnected(false);
+      }
+      if (wallet !== accounts[0]) {
+        setIsConnected(false);
+      }
+    });
+
+    window.ethereum.on('chainChanged', async _chainId => {
+      setIsConnected(false);
+      setChainId(_chainId);
+    });
+  }, []);
+
+  const connectMetaMask = async () => {
+    if (window.ethereum) {
+      const w3 = new Web3(window.ethereum);
+      try {
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        });
+        if (accounts[0]) {
+          setWallet(accounts[0]);
+          setIsConnected(true);
+        }
+      } catch (error) {
+        throw new Error(String(error));
+      }
+    } else {
+      console.log('Please install MetaMask');
+    }
+  };
+
+  const createContractInstance = () => {
+    const w3 = new Web3(window.ethereum);
+    const deployedNetwork = EtherContract.networks[contractsNetworks.development];
+    // @ts-nocheck
+    // @ts-ignore
+    const instance = new w3.eth.Contract(
+      EtherContract.abi,
+      deployedNetwork && deployedNetwork.address,
+    );
+    // @ts-nocheck
+    // @ts-ignore
+
+    instance.options.address = EtherContract.networks[contractsNetworks.development].address;
+    setTheContractInstance(instance);
+  };
+
+  useEffect(() => {
+    if (isConnected && wallet) {
+      connectMetaMask();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (theContractInstance) {
+      getCurrentSupply();
+    }
+  }, [theContractInstance]);
+
+  const getCurrentSupply = async () => {
+    if (theContractInstance && Object.keys(theContractInstance).length !== 0) {
+      const w3 = new Web3(window.ethereum);
+      // @ts-nocheck
+      // @ts-ignore
+      const alreadyMinted = await theContractInstance.methods
+        .totalSupply()
+        .call()
+        .catch(error => console.error(error));
+      setCurrentSupply(Number(alreadyMinted));
+    }
+  };
 
   return (
     <>
@@ -88,11 +208,11 @@ const HomeDescription = () => {
       </ButtonWrapper>
 
       <ThirdTitleWrapper>
-        <AlreadyMintedText>00000 / 10000 Minted</AlreadyMintedText>
+        <AlreadyMintedText>{currentSupply} / 10000 Minted</AlreadyMintedText>
       </ThirdTitleWrapper>
 
       <Modal isOpen={isVisible} onClose={toggleModalVisibility} closeOnBackdropClick={false}>
-        <HomeMintModal />
+        <HomeMintModal setCurrentSupply={setCurrentSupply} />
       </Modal>
     </>
   );
