@@ -19,7 +19,7 @@ import { useModal } from '../../../../context/ModalContext';
 import EtherContract from '../../../../contracts/EtherTea.json';
 
 const contractsNetworks = {
-  development: '1700473783318',
+  development: '1701372315147',
   mainnet: '1',
 };
 
@@ -31,6 +31,9 @@ export const HomeMintModal = () => {
   const [wallet, setWallet] = useState<string>('');
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [theContractInstance, setTheContractInstance] = useState<object | null>(null);
+  const [isMinting, setIsMinting] = useState<boolean>(false);
+  const [currentSupply, setCurrentSupply] = useState<number>(0);
+  const [toMint, setToMint] = useState<number>(1);
 
   const steps: Record<number, ReactNode> = {
     0: <FirstStep />,
@@ -38,12 +41,14 @@ export const HomeMintModal = () => {
     2: <ThirdStep />,
   };
 
-  const nextStep = () => {
+  const nextStep = async () => {
     if (page < 2) {
       setPage(page + 1);
       setProgress(progress + 50);
-    } else if (page === 2) {
-      connectMetaMask();
+    } else if (page === 2 && isConnected === false) {
+      await connectMetaMask();
+    } else if (page === 2 && isConnected === true) {
+      handleMint();
     } else {
       setPage(0);
       toggleModalVisibility();
@@ -121,10 +126,15 @@ export const HomeMintModal = () => {
     const w3 = new Web3(window.ethereum);
     console.log(EtherContract.networks, chainId);
     const deployedNetwork = EtherContract.networks[contractsNetworks.development];
+    // @ts-nocheck
+    // @ts-ignore
     const instance = new w3.eth.Contract(
       EtherContract.abi,
       deployedNetwork && deployedNetwork.address,
     );
+    // @ts-nocheck
+    // @ts-ignore
+
     instance.options.address = EtherContract.networks[contractsNetworks.development].address;
     console.log(instance);
     setTheContractInstance(instance);
@@ -135,6 +145,47 @@ export const HomeMintModal = () => {
       connectMetaMask();
     }
   }, []);
+
+  const getCurrentSupply = async () => {
+    if (theContractInstance && Object.keys(theContractInstance).length !== 0) {
+      const w3 = new Web3(window.ethereum);
+      // @ts-nocheck
+      // @ts-ignore
+      const alreadyMinted = await theContractInstance.methods
+        .totalSupply()
+        .call()
+        .catch((error) => console.error(error));
+      console.log(alreadyMinted);
+      setCurrentSupply(Number(alreadyMinted.toString()));
+    }
+  };
+
+
+  const handleMint = async () => {
+    setIsMinting(true);
+
+    const inputValue = toMint;
+    console.log({ inputValue })
+    // @ts-nocheck
+    // @ts-ignore
+    await theContractInstance.methods
+      .mint(inputValue)
+      .send({ from: wallet, value: 0 })
+      .catch(() => setIsMinting(false));
+    await getCurrentSupply().catch((error) => console.error(error));
+    setIsMinting(false);
+  };
+
+
+  const handleQuantity = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const action = event.currentTarget.getAttribute("data-action");
+
+    if (action === "increment" && toMint < 2) {
+      setToMint((prev) => prev + 1);
+    } else if (action === "decrement" && toMint > 1) {
+      setToMint((prev) => prev - 1);
+    }
+  };
 
   return (
     <HomeMintWrapperStyled>
@@ -148,6 +199,27 @@ export const HomeMintModal = () => {
       </HomeMintStepsWrapperStyled>
       <HomeMintFormWrapperStyled>{steps[page]}</HomeMintFormWrapperStyled>
       <HomeMintButtonsWrapperStyled>
+        {isConnected && page === 2 && (
+          <div className="mintForm">
+            <div className="toMint">
+              <button
+                className="button"
+                data-action="decrement"
+                onClick={handleQuantity}
+              >
+                -
+              </button>
+              <span>{toMint}</span>
+              <button
+                className="button"
+                data-action="increment"
+                onClick={handleQuantity}
+              >
+                +
+              </button>
+            </div>
+          </div>
+        )}
         <Button size="small" onClick={nextStep}>
           {page !== 2 ? 'NEXT' : isConnected ? 'MINT' : 'CONNECT'}
         </Button>
