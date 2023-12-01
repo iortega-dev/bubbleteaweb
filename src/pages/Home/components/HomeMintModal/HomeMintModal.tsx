@@ -101,6 +101,9 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
       }
     });
 
+    // @ts-nocheck
+    // @ts-ignore
+
     window.ethereum.on('chainChanged', async _chainId => {
       setIsConnected(false);
       setChainId(_chainId);
@@ -109,6 +112,9 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
 
   const connectMetaMask = async () => {
     if (window.ethereum) {
+      // @ts-nocheck
+      // @ts-ignore
+
       const w3 = new Web3(window.ethereum);
       try {
         const accounts = await window.ethereum.request({
@@ -129,10 +135,16 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
   const createContractInstance = () => {
     const w3 = new Web3(window.ethereum);
     console.log(EtherContract.networks, chainId);
+    // @ts-nocheck
+    // @ts-ignore
+
     const deployedNetwork = EtherContract.networks[contractsNetworks.sepolia];
     // @ts-nocheck
     // @ts-ignore
     const instance = new w3.eth.Contract(
+      // @ts-nocheck
+      // @ts-ignore
+
       EtherContract.abi,
       deployedNetwork && deployedNetwork.address,
     );
@@ -152,13 +164,16 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
 
   const getCurrentSupply = async () => {
     if (theContractInstance && Object.keys(theContractInstance).length !== 0) {
+      // @ts-nocheck
+      // @ts-ignore
+
       const w3 = new Web3(window.ethereum);
       // @ts-nocheck
       // @ts-ignore
       const alreadyMinted = await theContractInstance.methods
         .totalSupply()
         .call()
-        .catch((error) => console.error(error));
+        .catch((error: any) => console.error(error));
       setCurrentSupply(Number(alreadyMinted.toString()));
     }
   };

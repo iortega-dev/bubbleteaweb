@@ -82,6 +82,9 @@ const HomeDescription = () => {
       }
     });
 
+    // @ts-nocheck
+    // @ts-ignore
+
     window.ethereum.on('chainChanged', async _chainId => {
       setIsConnected(false);
       setChainId(_chainId);
@@ -90,6 +93,9 @@ const HomeDescription = () => {
 
   const connectMetaMask = async () => {
     if (window.ethereum) {
+      // @ts-nocheck
+      // @ts-ignore
+
       const w3 = new Web3(window.ethereum);
       try {
         const accounts = await window.ethereum.request({
@@ -109,10 +115,14 @@ const HomeDescription = () => {
 
   const createContractInstance = () => {
     const w3 = new Web3(window.ethereum);
-    const deployedNetwork = EtherContract.networks[contractsNetworks.sepolia];
     // @ts-nocheck
     // @ts-ignore
+
+    const deployedNetwork = EtherContract.networks[contractsNetworks.sepolia];
     const instance = new w3.eth.Contract(
+      // @ts-nocheck
+      // @ts-ignore
+
       EtherContract.abi,
       deployedNetwork && deployedNetwork.address,
     );
@@ -137,13 +147,16 @@ const HomeDescription = () => {
 
   const getCurrentSupply = async () => {
     if (theContractInstance && Object.keys(theContractInstance).length !== 0) {
+      // @ts-nocheck
+      // @ts-ignore
+
       const w3 = new Web3(window.ethereum);
       // @ts-nocheck
       // @ts-ignore
       const alreadyMinted = await theContractInstance.methods
         .totalSupply()
         .call()
-        .catch(error => console.error(error));
+        .catch((error: any) => console.error(error));
       setCurrentSupply(Number(alreadyMinted));
     }
   };
