@@ -198,6 +198,7 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
       .mint(inputValue)
       .send({ from: wallet, value: 0 })
       .catch(() => setIsMinting(false));
+    closeModal();
     await getCurrentSupply().catch(error => console.error(error));
     setIsMinting(false);
   };
@@ -224,7 +225,7 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
       </HomeMintStepsWrapperStyled>
       <HomeMintFormWrapperStyled>{steps[page]}</HomeMintFormWrapperStyled>
       <HomeMintButtonsWrapperStyled>
-        {isConnected && page === 2 && (
+        {isConnected && page === 2 && isMinting == false && (
           <HomeMintCounterWrapperStyled>
             <Button
               disabled={toMint === 1}
@@ -245,9 +246,18 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
             </Button>
           </HomeMintCounterWrapperStyled>
         )}
-        <Button size="small" onClick={nextStep}>
-          {page !== 2 ? 'NEXT' : isConnected ? 'MINT' : 'CONNECT'}
-        </Button>
+        {isMinting && (
+          <Button size="small">
+            MINTING...
+          </Button>
+
+        )}
+        {isMinting === false && (
+          <Button size="small" onClick={nextStep}>
+            {page !== 2 ? 'NEXT' : isConnected ? 'MINT' : 'CONNECT'}
+          </Button>
+
+        )}
       </HomeMintButtonsWrapperStyled>
     </HomeMintWrapperStyled>
   );
