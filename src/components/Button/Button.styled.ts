@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonStyled = styled.button<{ size: 'medium' | 'small' }>(({ size }) => ({
+export const ButtonStyled = styled.button<{ size: 'medium' | 'small' | 'icon' }>(({ size }) => ({
   display: 'inline-block',
   padding: size === 'medium' ? '16px 64px' : '8px 32px',
   lineHeight: 'normal',
@@ -18,6 +18,13 @@ export const ButtonStyled = styled.button<{ size: 'medium' | 'small' }>(({ size 
   overflow: 'hidden',
   border: size === 'medium' ? '6px solid black' : '4px solid black',
   outline: 'none !important',
+
+  ...(size === 'icon' && {
+    padding: '0px 10px',
+    fontSize: 24,
+    fontFamily: "'Poppins', sans-serif",
+    width: 45,
+  }),
 
   ':before': {
     content: '""',
@@ -49,5 +56,21 @@ export const ButtonStyled = styled.button<{ size: 'medium' | 'small' }>(({ size 
 
   ':hover:after': {
     backgroundColor: 'transparent',
+  },
+
+  '&:disabled': {
+    color: 'rgb(200, 200, 200)',
+    cursor: 'default',
+    backgroundColor: 'rgb(240, 240, 240)',
+    borderColor: 'rgb(200, 200, 200)',
+
+    ':before': {
+      backgroundColor: 'transparent',
+      transition: 'none',
+    },
+    ':after': {
+      backgroundColor: 'transparent',
+      transition: 'none',
+    },
   },
 }));
