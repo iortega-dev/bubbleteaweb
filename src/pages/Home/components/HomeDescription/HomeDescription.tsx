@@ -38,7 +38,7 @@ const HomeDescription = () => {
   const [wallet, setWallet] = useState<string>('');
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [theContractInstance, setTheContractInstance] = useState<object | null>(null);
-  const [currentSupply, setCurrentSupply] = useState<number>(0);
+  const [currentSupply, setCurrentSupply] = useState<Number>(0);
 
   useEffect(() => {
     const getProvider = async () => {
@@ -223,7 +223,7 @@ const HomeDescription = () => {
       </ButtonWrapper>
 
       <ThirdTitleWrapper>
-        <AlreadyMintedText>{currentSupply} / 10000 Minted</AlreadyMintedText>
+        <AlreadyMintedText>{currentSupply.toString()} / 10000 Minted</AlreadyMintedText>
       </ThirdTitleWrapper>
 
       <Modal isOpen={isVisible} onClose={toggleModalVisibility} closeOnBackdropClick={false}>

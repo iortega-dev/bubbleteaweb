@@ -36,6 +36,9 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
   const [wallet, setWallet] = useState<string>('');
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [theContractInstance, setTheContractInstance] = useState<object | null>(null);
+  // @ts-nocheck
+  // @ts-ignore
+
   const [isMinting, setIsMinting] = useState<boolean>(false);
   const [toMint, setToMint] = useState<number>(1);
 
