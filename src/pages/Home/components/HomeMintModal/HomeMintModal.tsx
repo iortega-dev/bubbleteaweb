@@ -21,6 +21,7 @@ import EtherContract from '../../../../contracts/EtherTea.json';
 const contractsNetworks = {
   development: '1701372315147',
   mainnet: '1',
+  sepolia: '11155111'
 };
 
 interface iModal {
