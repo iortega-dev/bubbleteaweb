@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ReactNode, useState, useEffect } from 'react';
 import detectEthereumProvider from '@metamask/detect-provider';
 import Web3 from 'web3';
 import {
   HomeMintButtonsWrapperStyled,
+  HomeMintCounterWrapperStyled,
   HomeMintFormWrapperStyled,
   HomeMintStepIndicator,
   HomeMintStepsRowStyled,
@@ -21,11 +23,11 @@ import EtherContract from '../../../../contracts/EtherTea.json';
 const contractsNetworks = {
   development: '1701372315147',
   mainnet: '1',
-  sepolia: '11155111'
+  sepolia: '11155111',
 };
 
 interface iModal {
-  setCurrentSupply: (value: Number) => void;
+  setCurrentSupply: (value: number) => void;
 }
 
 export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
@@ -149,7 +151,7 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
       // @ts-ignore
 
       EtherContract.abi,
-      deployedNetwork && deployedNetwork.address,
+      deployedNetwork && deployedNetwork.address
     );
     // @ts-nocheck
     // @ts-ignore
@@ -181,30 +183,28 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
     }
   };
 
-
   const handleMint = async () => {
     setIsMinting(true);
 
     const inputValue = toMint;
-    console.log({ inputValue })
+    console.log({ inputValue });
     // @ts-nocheck
     // @ts-ignore
     await theContractInstance.methods
       .mint(inputValue)
       .send({ from: wallet, value: 0 })
       .catch(() => setIsMinting(false));
-    await getCurrentSupply().catch((error) => console.error(error));
+    await getCurrentSupply().catch(error => console.error(error));
     setIsMinting(false);
   };
 
-
   const handleQuantity = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const action = event.currentTarget.getAttribute("data-action");
+    const action = event.currentTarget.getAttribute('data-action');
 
-    if (action === "increment" && toMint < 2) {
-      setToMint((prev) => prev + 1);
-    } else if (action === "decrement" && toMint > 1) {
-      setToMint((prev) => prev - 1);
+    if (action === 'increment' && toMint < 2) {
+      setToMint(prev => prev + 1);
+    } else if (action === 'decrement' && toMint > 1) {
+      setToMint(prev => prev - 1);
     }
   };
 
@@ -221,25 +221,25 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
       <HomeMintFormWrapperStyled>{steps[page]}</HomeMintFormWrapperStyled>
       <HomeMintButtonsWrapperStyled>
         {isConnected && page === 2 && (
-          <div className="mintForm">
-            <div className="toMint">
-              <button
-                className="button"
-                data-action="decrement"
-                onClick={handleQuantity}
-              >
-                -
-              </button>
-              <span>{toMint}</span>
-              <button
-                className="button"
-                data-action="increment"
-                onClick={handleQuantity}
-              >
-                +
-              </button>
-            </div>
-          </div>
+          <HomeMintCounterWrapperStyled>
+            <Button
+              disabled={toMint === 1}
+              size="icon"
+              data-action="decrement"
+              onClick={handleQuantity}
+            >
+              -
+            </Button>
+            <span>{toMint}</span>
+            <Button
+              disabled={toMint === 2}
+              size="icon"
+              data-action="increment"
+              onClick={handleQuantity}
+            >
+              +
+            </Button>
+          </HomeMintCounterWrapperStyled>
         )}
         <Button size="small" onClick={nextStep}>
           {page !== 2 ? 'NEXT' : isConnected ? 'MINT' : 'CONNECT'}

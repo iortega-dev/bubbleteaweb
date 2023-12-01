@@ -78,3 +78,18 @@ export const HomeMintStepIndicator = styled.div<{ active?: boolean }>(({ active 
   alignItems: 'center',
   justifyContent: 'center',
 }));
+
+export const HomeMintCounterWrapperStyled = styled.div(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  paddingBottom: theme.spacing(4),
+  gap: theme.spacing(2),
+
+  span: {
+    fontFamily: "'Poppins', sans-serif",
+    fontSize: 24,
+    fontWeight: 'bold',
+    padding: '0 4px',
+  },
+}));
