@@ -25,7 +25,7 @@ const contractsNetworks = {
 };
 
 interface iModal {
-  setCurrentSupply: () => void;
+  setCurrentSupply: (value: Number) => void;
 }
 
 export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
@@ -159,7 +159,6 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
         .totalSupply()
         .call()
         .catch((error) => console.error(error));
-      console.log(alreadyMinted);
       setCurrentSupply(Number(alreadyMinted.toString()));
     }
   };
