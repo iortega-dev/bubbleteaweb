@@ -247,16 +247,14 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
           </HomeMintCounterWrapperStyled>
         )}
         {isMinting && (
-          <Button size="small">
+          <Button size="small" disabled>
             MINTING...
           </Button>
-
         )}
         {isMinting === false && (
           <Button size="small" onClick={nextStep}>
             {page !== 2 ? 'NEXT' : isConnected ? 'MINT' : 'CONNECT'}
           </Button>
-
         )}
       </HomeMintButtonsWrapperStyled>
     </HomeMintWrapperStyled>
