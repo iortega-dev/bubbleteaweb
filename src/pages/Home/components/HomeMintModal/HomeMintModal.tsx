@@ -129,7 +129,7 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
   const createContractInstance = () => {
     const w3 = new Web3(window.ethereum);
     console.log(EtherContract.networks, chainId);
-    const deployedNetwork = EtherContract.networks[contractsNetworks.development];
+    const deployedNetwork = EtherContract.networks[contractsNetworks.sepolia];
     // @ts-nocheck
     // @ts-ignore
     const instance = new w3.eth.Contract(
@@ -139,7 +139,7 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
     // @ts-nocheck
     // @ts-ignore
 
-    instance.options.address = EtherContract.networks[contractsNetworks.development].address;
+    instance.options.address = EtherContract.networks[contractsNetworks.sepolia].address;
     console.log(instance);
     setTheContractInstance(instance);
   };
