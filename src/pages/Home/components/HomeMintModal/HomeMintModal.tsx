@@ -50,6 +50,11 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
     2: <ThirdStep />,
   };
 
+  const closeModal = () => {
+    setPage(0);
+    toggleModalVisibility();
+  };
+
   const nextStep = async () => {
     if (page < 2) {
       setPage(page + 1);
@@ -59,8 +64,7 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
     } else if (page === 2 && isConnected === true) {
       handleMint();
     } else {
-      setPage(0);
-      toggleModalVisibility();
+      closeModal();
     }
   };
 
