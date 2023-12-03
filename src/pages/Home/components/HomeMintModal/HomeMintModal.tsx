@@ -19,6 +19,7 @@ import ThirdStep from './steps/ThirdStep';
 import ProgressBar from '../../../../components/ProgressBar/ProgressBar';
 import { useModal } from '../../../../context/ModalContext';
 import EtherContract from '../../../../contracts/EtherTea.json';
+import MintingLoader from '../../../../components/MintingLoader/MintingLoader';
 
 const contractsNetworks = {
   development: '1701372315147',
@@ -246,11 +247,7 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
             </Button>
           </HomeMintCounterWrapperStyled>
         )}
-        {isMinting && (
-          <Button size="small" disabled>
-            MINTING...
-          </Button>
-        )}
+        {isMinting && <MintingLoader />}
         {isMinting === false && (
           <Button size="small" onClick={nextStep}>
             {page !== 2 ? 'NEXT' : isConnected ? 'MINT' : 'CONNECT'}
