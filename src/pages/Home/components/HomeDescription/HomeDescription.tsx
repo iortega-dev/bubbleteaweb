@@ -25,11 +25,12 @@ import { useModal } from '../../../../context/ModalContext';
 import EtherContract from '../../../../contracts/EtherTea.json';
 
 const contractsNetworks = {
-  development: '1701372315147',
+  development: '1701685034649',
   mainnet: '1',
-  sepolia: '11155111'
-
+  sepolia: '11155111',
 };
+
+const contractCurrentNetwork = contractsNetworks.sepolia;
 
 const HomeDescription = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -118,7 +119,7 @@ const HomeDescription = () => {
     // @ts-nocheck
     // @ts-ignore
 
-    const deployedNetwork = EtherContract.networks[contractsNetworks.sepolia];
+    const deployedNetwork = EtherContract.networks[contractCurrentNetwork];
     const instance = new w3.eth.Contract(
       // @ts-nocheck
       // @ts-ignore
@@ -129,7 +130,7 @@ const HomeDescription = () => {
     // @ts-nocheck
     // @ts-ignore
 
-    instance.options.address = EtherContract.networks[contractsNetworks.sepolia].address;
+    instance.options.address = EtherContract.networks[contractCurrentNetwork].address;
     setTheContractInstance(instance);
   };
 

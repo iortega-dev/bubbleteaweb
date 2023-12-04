@@ -22,10 +22,12 @@ import EtherContract from '../../../../contracts/EtherTea.json';
 import MintingLoader from '../../../../components/MintingLoader/MintingLoader';
 
 const contractsNetworks = {
-  development: '1701372315147',
+  development: '1701685034649',
   mainnet: '1',
   sepolia: '11155111',
 };
+
+const contractCurrentNetwork = contractsNetworks.sepolia;
 
 interface iModal {
   setCurrentSupply: (value: number) => void;
@@ -148,7 +150,7 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
     // @ts-nocheck
     // @ts-ignore
 
-    const deployedNetwork = EtherContract.networks[contractsNetworks.sepolia];
+    const deployedNetwork = EtherContract.networks[contractCurrentNetwork];
     // @ts-nocheck
     // @ts-ignore
     const instance = new w3.eth.Contract(
@@ -161,7 +163,7 @@ export const HomeMintModal: React.FC<iModal> = ({ setCurrentSupply }) => {
     // @ts-nocheck
     // @ts-ignore
 
-    instance.options.address = EtherContract.networks[contractsNetworks.sepolia].address;
+    instance.options.address = EtherContract.networks[contractCurrentNetwork].address;
     console.log(instance);
     setTheContractInstance(instance);
   };
