@@ -25,9 +25,10 @@ const contractsNetworks = {
   development: '1701685034649',
   mainnet: '1',
   sepolia: '11155111',
+  polygon: '137'
 };
 
-const contractCurrentNetwork = contractsNetworks.sepolia;
+const contractCurrentNetwork = contractsNetworks.polygon;
 
 interface iModal {
   setCurrentSupply: (value: number) => void;
