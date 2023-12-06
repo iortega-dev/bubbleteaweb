@@ -18,17 +18,17 @@ const FAQs: React.FC = () => {
     {
       question: '- What is EtherTea?',
       answer:
-        'EtherTea is a collection of 10,000 FREE unique NFT collectibles, inspired by the vibrant and diverse world of bubble tea, hosted on the Ethereum blockchain. This is a side project created by "BeardedBaldies". You can find more information about the main project at BeardedBaldies Website (https://beardedbaldies.com/).',
+        'EtherTea is a collection of 3000 FREE unique NFT collectibles, inspired by the vibrant and diverse world of bubble tea, hosted on the Polygon blockchain. This is a side project created by "BeardedBaldies". You can find more information about the main project at BeardedBaldies Website (https://beardedbaldies.com/).',
     },
     {
       question: '- How can I acquire an EtherTea NFT?',
       answer:
-        'EtherTea NFTs will be gifted. However, you will have to cover the minting cost associated with the Ethereum network at the time of minting.',
+        'EtherTea NFTs will be gifted. However, you will have to cover the minting cost associated with the Polygon network at the time of minting.',
     },
     {
       question: '- Are there any additional costs associated with EtherTea NFTs?',
       answer:
-        'No, there is no additional costs associated with EtherTea NFTs. However, when minting, users are responsible for the associated Ethereum network gas fees.',
+        'No, there is no additional costs associated with EtherTea NFTs. However, when minting, users are responsible for the associated Polygon network gas fees.',
     },
     {
       question: '- What is the future roadmap or utility for EtherTea?',

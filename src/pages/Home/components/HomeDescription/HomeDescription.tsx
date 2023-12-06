@@ -225,7 +225,7 @@ const HomeDescription = () => {
       </ButtonWrapper>
 
       <ThirdTitleWrapper>
-        <AlreadyMintedText>{currentSupply.toString()} / 10000 Minted</AlreadyMintedText>
+        <AlreadyMintedText>{currentSupply.toString()} / 3000 Minted</AlreadyMintedText>
       </ThirdTitleWrapper>
 
       <Modal isOpen={isVisible} onClose={toggleModalVisibility} closeOnBackdropClick={false}>
